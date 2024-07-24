@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secrets Keys</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+
+</head>
+<body>
+    <h1>Create your Keys</h1>
+    <div class="container mt-5">
+        <form action="/hash" method="POST" class="form-inline">
+            <div class="form-group mr-3">
+                <label for="inputField" class="mr-2">Enter your String:</label>
+                <input type="text" id="inputField" name="inputField" class="form-control" placeholder="HelloWorld123" maxlength="14" >
+            </div>
+            <button type="submit" id="commitBtn" class="btn btn-warning">Convert</button>
+        </form>
+    </div>
+
+    <div class="container mt-5">
+        <h2>Encoded Input</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Keys</th>
+                    <th>Encoded input</th>
+                    <th>Explanation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Basic Key</td>
+                    <td><% if (encoded !== null) { %>
+                        <p><%= encoded %></p>
+                        <p>generation time: <%= elapsedTime %></p>
+                    <% } %></td>
+                    <td>    <p>each letter is multiplied by the prime number 31, that is then raised to the power of the characters index in the string.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>MD5 Hash</td>
+                    <td> <% if (encoded !== null) { %>
+                        <p><%= md5encoded %></p>
+                       
+                    <% } else {%>
+                        <p>0</p>
+                        <%  } %></td>
+                    <td>The md5 function computes an MD5-like hash of a message by initializing constants and helper functions. It processes the message by appending a terminator and padding until the length is a multiple of 64. Each character in the message is then transformed using a prime number 31 raised to the power of its index. The function iterates through chunks of the transformed message, performs bitwise operations and rotations, and returns the resulting hash as a hexadecimal string.</td>
+                </tr>
+                <tr>
+                    <td>SHA-1 Hash</td>
+                    <td> <% if (encoded !== null) { %>
+                        <p><%= sha1encoded %></p>
+                       
+                    <% } else {%>
+                        <p>0</p>
+                        <%  } %></td>
+                    <td>The sha1 function calculates the SHA-1 hash of your string by initializing constants and converting the message into a byte array using UTF-8 encoding. It applies padding to ensure the message length is a multiple of 64 bytes and processes each 512-bit chunk using bitwise operations and rotations. The resulting hash is formatted as a hexadecimal string and returned.</td>
+                </tr>
+                <tr>
+                    <td>SHA-2 Hash</td>
+                    <td> <% if (encoded !== null) { %>
+                        <p>SHA256:</p> <p><%= sha256encoded %></p>
+                        <p>SHA512: <%= sha512encoded %></p>
+            
+                    <% } else {%>
+                        <p>0</p>
+                        <%  } %></td>
+                    <td>These hash-values are generated with Web Crypto API to securely compute the hash values for your input message.</td>
+                </tr>
+                <tr>
+                    <td>MNTLM</td>
+                    <td>Data 5</td>
+                    <td>Data 6</td>
+                </tr>
+                <tr>
+                    <td>LANMAN</td>
+                    <td>Data 5</td>
+                    <td>Data 6</td>
+                </tr>
+                <tr>
+                    <td>Argon2</td>
+                    <td>Data 5</td>
+                    <td>Data 6</td>
+                </tr>
+                <tr>
+                    <td>Bcrypt</td>
+                    <td>Data 5</td>
+                    <td>Data 6</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="/public/js/hashing.js"></script>
+    <script src="/public/js/md5.js"></script>
+    <script src="/public/js/sha1.js"></script>
+    <script src="/public/js/hashing.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+</body>
+</html>

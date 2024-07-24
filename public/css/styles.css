@@ -1,0 +1,16 @@
+body {
+    background-color: rgb(255, 248, 214);
+    color: rgb(152, 0, 99);
+    align-items: center;
+}
+
+tr {
+    background-color: white;
+    border-radius: 8px;
+    
+}
+
+td {
+    max-width: 150px;
+    word-wrap: break-word;
+}
